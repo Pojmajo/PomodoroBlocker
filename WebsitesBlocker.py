@@ -1,8 +1,8 @@
 class WebsitesBlocker:
-    def __init__(self, websitesList):
+    def __init__(self, websites_list):
         self.__hostsPath = r"C:\Windows\System32\drivers\etc\hosts"
         self.__redirect = "127.0.0.1"
-        self.__websitesList = websitesList
+        self.__websitesList = websites_list
 
     def block(self):
         with open(self.__hostsPath, 'r+') as file:
