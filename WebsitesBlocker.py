@@ -4,7 +4,7 @@ class WebsitesBlocker:
         self.__redirect = "127.0.0.1"
         self.__websitesList = websitesList
 
-    def Block(self):
+    def block(self):
         with open(self.__hostsPath, 'r+') as file:
             content = file.read()
             for site in self.__websitesList:
@@ -13,7 +13,7 @@ class WebsitesBlocker:
                 else:
                     file.write(self.__redirect+" "+site+"\n")
 
-    def Unlock(self):
+    def unlock(self):
         with open(self.__hostsPath, 'r+') as file:
             content = file.readlines()
             file.seek(8)

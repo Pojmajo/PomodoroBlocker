@@ -6,6 +6,7 @@ import Constants
 from oauth2client import file, client, tools
 from oauth2client.service_account import ServiceAccountCredentials
 
+
 class GoogleSheetsWriter:
     def __init__(self, spreadsheet_id):
         self.__spreadsheetId = spreadsheet_id

@@ -6,7 +6,9 @@ from WebsitesBlocker import WebsitesBlocker
 from playsound import playsound
 from GoogleSheetsWriter import GoogleSheetsWriter
 
+
 class PomodoroGUI():
+
     def __init__(self):
         self.window = tk.Tk()
         self.window.title(Constants.WINDOWS_TITLE)
@@ -18,24 +20,27 @@ class PomodoroGUI():
         self.window.geometry(Constants.SIZE_OF_WINDOW_GUI)
         self.window.resizable(0, 0)
         self.photo = tk.PhotoImage(file=Constants.PATH_TO_TOMATO_IMAGE)
-        self.font_style = tkFont.Font(family="Arial", size = 15)
-        self.label = tk.Label(self.window, fg="dark green", font=self.font_style, textvariable = self.text)
+        self.font_style = tkFont.Font(family="Arial", size=15)
+        self.label = tk.Label(self.window, fg="dark green", font=self.font_style, textvariable=self.text)
         self.label.pack()
         self.second_label = tk.Label(self.window, fg="dark green", font=self.font_style, textvariable=self.second_text)
         self.second_label.pack()
-        self.button = tk.Button(self.frame, text="QUIT", image=self.photo, fg="red", command=lambda: self.startLearning(Constants.LEARNING_MINUTES, Constants.SHORT_BREAK_MINUTES, Constants.LONG_BREAK_MINUTES)).pack(side=tk.TOP)
+        self.button = tk.Button(self.frame, text="QUIT", image=self.photo, fg="red",
+                                command=lambda: self.start_learning(Constants.LEARNING_MINUTES,
+                                                                    Constants.SHORT_BREAK_MINUTES,
+                                                                    Constants.LONG_BREAK_MINUTES)).pack(side=tk.TOP)
         self.window.mainloop()
 
-    def startLearning(self, learning_minutes, short_break_minutes, long_break_minutes):
+    def start_learning(self, learning_minutes, short_break_minutes, long_break_minutes):
         website_blocker = WebsitesBlocker(Constants.LISTS_OF_BLOCKED_WEBSITES)
         google_writer = GoogleSheetsWriter(Constants.SPREADSHEET_ID)
         while True:
             for number_of_breaks in range(Constants.NUMBER_OF_BREAKS):
-                website_blocker.Block()
-                self._timer('Pomodoro!',learning_minutes) #Pomodoro
-                website_blocker.Unlock()
-                self._timer('Short break',short_break_minutes) #Short break
-            self._timer('Long break', long_break_minutes) #Long break
+                website_blocker.block()
+                self._timer('Pomodoro!', learning_minutes)  # Pomodoro
+                website_blocker.unlock()
+                self._timer('Short break', short_break_minutes)  # Short break
+            self._timer('Long break', long_break_minutes)  # Long break
             google_writer.update_sheet("Nauka", '22', '23')
 
     def _timer(self, text, minutes):
@@ -48,18 +53,10 @@ class PomodoroGUI():
         while when_to_stop >= 0:
             m, s = divmod(when_to_stop, 60)
             time_left = str(m).zfill(2) + ":" + str(s).zfill(2)
-            self.__changeText(time_left + "\r")
+            self.__change_text(time_left + "\r")
             self.window.update()
             time.sleep(1)
             when_to_stop -= 1
 
-    def __changeText(self, text):
+    def __change_text(self, text):
         self.text.set(text)
-
-
-
-
-
-
-
-
