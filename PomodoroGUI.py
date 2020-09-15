@@ -1,12 +1,12 @@
 import tkinter as tk
 import time
-import Constans
+import Constants
 from WebsitesBlocker import WebsitesBlocker
 
 class PomodoroGUI():
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title(Constans.windowTitle)
+        self.window.title(Constants.WINDOWS_TITLE)
         self.frame = tk.Frame(self.window)
         self.frame.pack()
         self.text = tk.StringVar()
@@ -16,7 +16,7 @@ class PomodoroGUI():
         self.photo = tk.PhotoImage(file="Images/tomato.png")
         self.label = tk.Label(self.window, fg="dark green", textvariable = self.text)
         self.label.pack()
-        self.button = tk.Button(self.frame, text="QUIT", image=self.photo, fg="red", command=lambda:[self.countdown(Constans.numberOfMinutes*60), WebsitesBlocker(Constans.listOfBlockedWebsites).Block()]).pack(side=tk.TOP)
+        self.button = tk.Button(self.frame, text="QUIT", image=self.photo, fg="red", command=lambda:[self.countdown(Constants.NUMBER_OF_LEARNING_MINUTES * 60), WebsitesBlocker(Constants.LISTS_OF_BLOCKED_WEBSITES).Block()]).pack(side=tk.TOP)
         self.window.mainloop()
 
     def countdown(self, uint):

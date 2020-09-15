@@ -1,4 +1,4 @@
-import Constans
+import Constants
 from WebsitesBlocker import WebsitesBlocker
 from GoogleSheetsWriter import GoogleSheetsWriter
 from PomodoroGUI import PomodoroGUI
@@ -9,4 +9,4 @@ from PomodoroGUI import PomodoroGUI
 
 pomodoroWindow = PomodoroGUI()
 
-##googleSheetsWriter.update_sheet('Matematyka', startTime, endTime, timeElapsed, numberOfSessions)
+#googleSheetsWriter.update_sheet('Matematyka', startTime, endTime, timeElapsed, numberOfSessions)

@@ -1,0 +1,4 @@
+LISTS_OF_BLOCKED_WEBSITES = ["www.facebook.com", "facebook.com"]
+SPREADSHEET_ID = "1iV3yh3dGPy27lEUXfVMrnASVF8RTCBNVXTtxd3a4EtY"
+WINDOWS_TITLE = "Pomodoro blocker"
+NUMBER_OF_LEARNING_MINUTES = 1
